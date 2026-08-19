@@ -18,6 +18,8 @@
           <img
             [src]="slides[currentSlide].src"
             [alt]="slides[currentSlide].caption"
+            title="click for a closer look"
+            (click)="openLightbox()"
           />
         </div>
 
@@ -140,5 +142,58 @@
     <a routerLink="/portfolio">« all projects</a>
     <span class="gn-webring__dot">✦</span>
     <a routerLink="/">home</a>
+  </div>
+
+  <div
+    class="lightbox"
+    *ngIf="lightboxOpen"
+    (click)="closeLightbox()"
+    role="dialog"
+    aria-modal="true"
+    [attr.aria-label]="slides[currentSlide].caption"
+  >
+    <div class="lightbox__panel gn-panel" (click)="$event.stopPropagation()">
+      <div class="gn-panel__head">
+        <span class="gn-panel__glyph">✎</span>
+        <span class="lightbox__title">{{ slides[currentSlide].caption }}</span>
+        <button
+          type="button"
+          class="lightbox__close"
+          (click)="closeLightbox()"
+          aria-label="Close"
+        >
+          ✕
+        </button>
+      </div>
+
+      <div class="lightbox__stage">
+        <img
+          [src]="slides[currentSlide].src"
+          [alt]="slides[currentSlide].caption"
+        />
+      </div>
+
+      <div class="slideshow__controls" *ngIf="slides.length > 1">
+        <button
+          type="button"
+          class="slideshow__btn"
+          (click)="prevSlide()"
+          aria-label="Previous screenshot"
+        >
+          ◄ prev
+        </button>
+        <button
+          type="button"
+          class="slideshow__btn"
+          (click)="nextSlide()"
+          aria-label="Next screenshot"
+        >
+          next ►
+        </button>
+        <span class="slideshow__caption"
+          >{{ currentSlide + 1 }} of {{ slides.length }}</span
+        >
+      </div>
+    </div>
   </div>
 </div>

@@ -31,6 +31,7 @@
       max-width: 100%;
       max-height: 100%;
       display: block;
+      cursor: zoom-in;
     }
   }
 
@@ -68,5 +69,69 @@
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+  }
+}
+
+// Closer-look modal: brown scrim, panel with hard modal shadow, instant open.
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  background: rgba(58, 45, 35, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: $spacing-big;
+  cursor: zoom-out;
+
+  &__panel {
+    cursor: default;
+    max-width: min(120rem, 94vw);
+    max-height: 92vh;
+    display: flex;
+    flex-direction: column;
+    box-shadow: $shadow-modal;
+  }
+
+  &__title {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  &__close {
+    margin-left: auto;
+    font-family: $font-family-default;
+    font-size: $font-size-default;
+    font-weight: $font-weight-bold;
+    line-height: 1;
+    color: $brown-7;
+    background: none;
+    border: none;
+    padding: 0 0.2rem;
+    cursor: pointer;
+
+    &:hover {
+      color: $color-danger;
+    }
+  }
+
+  &__stage {
+    min-height: 0;
+    background: $color-surface-sunken;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+
+    img {
+      max-width: 100%;
+      max-height: calc(92vh - 8rem);
+      display: block;
+    }
+  }
+
+  .slideshow__controls {
+    border-top: 2px solid $color-border-strong;
   }
 }

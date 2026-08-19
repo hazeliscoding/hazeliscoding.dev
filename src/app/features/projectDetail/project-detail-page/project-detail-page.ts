@@ -20,6 +20,20 @@ export class ProjectDetailPage {
   );
 
   currentSlide = 0;
+  lightboxOpen = false;
+
+  openLightbox() {
+    this.lightboxOpen = true;
+  }
+
+  closeLightbox() {
+    this.lightboxOpen = false;
+  }
+
+  @HostListener('window:keydown.escape')
+  onEscape() {
+    this.lightboxOpen = false;
+  }
 
   get slides(): ProjectImage[] {
     if (!this.project) return [];
