@@ -12,25 +12,32 @@ import { dirname, join } from 'node:path';
 
 const publicDir = join(dirname(fileURLToPath(import.meta.url)), '..', 'public');
 
+// Sparkle cluster: one main peach sparkle, a smaller teal one, tiny glints —
+// each with a 1px sand sticker shadow, on cream inside a hard brown border.
 const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" shape-rendering="crispEdges">
   <rect width="16" height="16" fill="#5d4b3c"/>
   <rect x="1" y="1" width="14" height="14" fill="#fff8f0"/>
   <g fill="#c9b6a2">
-    <rect x="8" y="3" width="2" height="11"/>
-    <rect x="3" y="8" width="11" height="2"/>
-    <rect x="7" y="6" width="4" height="6"/>
-    <rect x="6" y="7" width="6" height="4"/>
+    <rect x="7" y="7" width="1" height="7"/>
+    <rect x="4" y="10" width="7" height="1"/>
+    <rect x="6" y="9" width="3" height="3"/>
+    <rect x="12" y="3" width="1" height="5"/>
+    <rect x="10" y="5" width="5" height="1"/>
+    <rect x="11" y="4" width="3" height="3"/>
   </g>
   <g fill="#ffaa88">
-    <rect x="7" y="2" width="2" height="12"/>
-    <rect x="2" y="7" width="12" height="2"/>
-    <rect x="6" y="5" width="4" height="6"/>
-    <rect x="5" y="6" width="6" height="4"/>
+    <rect x="6" y="6" width="1" height="7"/>
+    <rect x="3" y="9" width="7" height="1"/>
+    <rect x="5" y="8" width="3" height="3"/>
   </g>
   <g fill="#44bbaa">
-    <rect x="12" y="2" width="1" height="3"/>
-    <rect x="11" y="3" width="3" height="1"/>
+    <rect x="11" y="2" width="1" height="5"/>
+    <rect x="9" y="4" width="5" height="1"/>
+    <rect x="10" y="3" width="3" height="3"/>
   </g>
+  <rect x="3" y="3" width="1" height="1" fill="#f28d63"/>
+  <rect x="13" y="11" width="1" height="1" fill="#7fd6c6"/>
+  <rect x="11" y="13" width="1" height="1" fill="#ffc4a5"/>
 </svg>`;
 
 const render = (size) =>
