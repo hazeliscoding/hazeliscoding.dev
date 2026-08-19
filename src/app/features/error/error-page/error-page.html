@@ -1,16 +1,15 @@
-<div class="error-page">
-  <app-terminal-section
-    customTitle="Error"
-    [shortTerminalLine]="true"
-    [customCommand]="currentPath"
-    [errorCommand]="true"
-  >
-    <div class="not-found">
-      <h2 class="not-found__title">404 - Command not Found</h2>
-
-      <p class="not-found__output">
-        bash: {{ currentPath }}: command not found
-      </p>
+<div class="error-page gn-shell">
+  <section class="gn-panel gn-panel--pop">
+    <div class="gn-panel__head">
+      <span class="gn-panel__glyph">☆</span>404
     </div>
-  </app-terminal-section>
+
+    <div class="gn-panel__body not-found">
+      <h2 class="not-found__title">no page here</h2>
+
+      <p class="not-found__output">{{ currentPath }} wandered off somewhere...</p>
+
+      <a class="gn-btn" routerLink="/">« back home</a>
+    </div>
+  </section>
 </div>

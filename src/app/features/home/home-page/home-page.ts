@@ -22,6 +22,11 @@ import { Meta, Title } from '@angular/platform-browser';
   styleUrl: './home-page.scss',
 })
 export class HomePage {
+  lastUpdate = new Date().toLocaleDateString('en-US', {
+    month: 'short',
+    year: 'numeric',
+  });
+
   constructor(
     private title: Title,
     private meta: Meta,

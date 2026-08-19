@@ -76,7 +76,7 @@
     color: $color-title-dark;
 
     &::before {
-      content: "# ";
+      content: "» ";
       color: $color-accent;
     }
   }
@@ -112,9 +112,10 @@
   blockquote {
     margin: 0 0 $spacing-medium;
     padding: $spacing-small $spacing-medium;
-    border-left: 4px solid $color-accent;
-    background: rgba(255, 255, 255, 0.04);
-    color: $color-ubuntu-muted;
+    border-left: 3px solid $teal-400;
+    background: $color-surface-sunken;
+    color: $color-text-muted;
+    font-family: $font-family-mono;
   }
 
   img {
@@ -123,12 +124,12 @@
     height: auto;
     margin: 0 0 $spacing-medium;
     border-radius: $border-radius-default;
-    border: 1px solid rgba(255, 255, 255, 0.12);
+    border: 1px solid $color-border;
   }
 
   hr {
     border: none;
-    border-top: 1px solid rgba(255, 255, 255, 0.12);
+    border-top: 1px solid $color-border;
     margin: $spacing-big 0;
   }
 
@@ -148,15 +149,17 @@
   pre {
     padding: $spacing-medium;
     overflow: auto;
-    background: rgba(255, 255, 255, 0.06);
-    border: 1px solid rgba(255, 255, 255, 0.12);
+    background: $color-surface-sunken;
+    border: 1px solid $color-border;
     margin: 0 0 $spacing-medium;
-    font-size: 1.6rem;
+    font-family: $font-family-mono;
+    font-size: $font-size-small;
   }
 
   code {
-    background: rgba(255, 255, 255, 0.06);
-    border: 1px solid rgba(255, 255, 255, 0.12);
+    background: $color-surface-sunken;
+    border: 1px solid $color-border;
     padding: 0.1rem 0.35rem;
+    font-family: $font-family-mono;
   }
 }

@@ -37,13 +37,12 @@
   text-decoration: none;
   color: $color-text-dark;
   background-color: $color-section-background-dark;
-  transition:
-    transform 0.2s ease,
-    box-shadow 0.2s ease;
+  box-shadow: $shadow-sticker;
+  transition: background-color $dur-fast;
 
   &:hover {
-    transform: translateY(-4px);
-    box-shadow: $box-shadow-default;
+    background-color: $teal-100;
+    box-shadow: $shadow-pop;
   }
 
   &__top {

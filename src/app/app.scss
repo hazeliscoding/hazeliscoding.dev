@@ -1,12 +1,9 @@
 @use "abstracts/variables" as *;
 
 .header-container {
-  padding: 0 clamp(1rem, 4vw, 8rem);
+  padding: 1.2rem clamp(1rem, 4vw, 8rem) 0.6rem;
   position: sticky;
   top: 0;
   z-index: 1000;
+  background-color: $color-background-dark;
 }
-
-// .app-container {
-//   height: 100%;
-// }

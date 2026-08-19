@@ -1,15 +1,18 @@
 @use "abstracts/variables" as *;
 
+// Pixel-type section label on a teal chip.
 .app-title {
-  font-size: $font-size-big;
-  background-color: #5f5fff;
-  color: #ffff87;
-  padding: 0 $spacing-medium;
+  font-family: $font-family-display;
+  font-size: $font-size-display-sm;
+  font-weight: $font-weight-normal;
+  line-height: 1.15;
+  letter-spacing: 0.04em;
+
+  background-color: $teal-200;
+  color: $brown-7;
+  border: 1px solid $teal-400;
+  padding: 0.1rem $spacing-medium;
   width: fit-content;
 
   margin-bottom: $spacing-medium;
-
-  @media screen and (max-width: 600px) {
-    font-size: $font-size-default;
-  }
 }

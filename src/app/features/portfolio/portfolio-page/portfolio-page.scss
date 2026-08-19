@@ -1,28 +1,6 @@
-@use "abstracts/variables" as *;
-
+// Layout comes from the global GlitterNet classes (gn-shell, gn-grid, gn-webring).
 .portfolio-page {
-  padding: 2rem clamp(1rem, 4vw, 8rem);
-
-  @media screen and (max-width: 768px) {
-    padding-top: 0;
-    margin-top: $spacing-medium;
-  }
-}
-
-.projects-container {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  padding: 0 clamp(0rem, 4vw, 8rem);
-  gap: 2rem;
-
-  @media screen and (max-width: 1250px) {
-    grid-template-columns: 1fr 1fr;
-  }
-
-  @media screen and (max-width: 768px) {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 0;
+  ::ng-deep .project-card {
+    max-width: none;
   }
 }

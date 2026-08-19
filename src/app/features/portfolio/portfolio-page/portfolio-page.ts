@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import { Project } from '../../../data/projects.data';
-import { TerminalSection } from '../../../core/layout/terminal-section/terminal-section';
 import { ProjectCard } from '../../../core/shared/project-card/project-card';
 import { ProjectsDataService } from '../../../services/projects-data.service';
 import { Meta, Title } from '@angular/platform-browser';
@@ -8,7 +8,7 @@ import { Meta, Title } from '@angular/platform-browser';
 @Component({
   selector: 'portfolio-page',
   standalone: true,
-  imports: [TerminalSection, ProjectCard],
+  imports: [ProjectCard, RouterLink],
   templateUrl: './portfolio-page.html',
   styleUrl: './portfolio-page.scss',
 })

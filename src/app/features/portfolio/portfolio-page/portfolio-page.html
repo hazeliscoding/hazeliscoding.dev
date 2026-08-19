@@ -1,15 +1,20 @@
-<!-- TODO -->
-<!-- Projects count -->
-<div class="portfolio-page">
-  <app-terminal-section
-    customTitle="Portfolio"
-    customCommand="glow portfolio.md"
-    [shortTerminalLine]="true"
-  >
-    <div class="projects-container">
-      @for (project of projectsData; track project.id) {
-        <project-card [project]="project"></project-card>
-      }
+<div class="portfolio-page gn-shell">
+  <header class="gn-masthead fade">
+    <div class="gn-wordmark">projects<span class="gn-spark"> ✧</span></div>
+    <div class="gn-tagline">
+      everything i've built, one page each — screenshots, write-ups, and demos
     </div>
-  </app-terminal-section>
+  </header>
+
+  <div class="gn-counter">{{ projectsData.length }} on display · more in the workshop</div>
+
+  <div class="gn-grid">
+    @for (project of projectsData; track project.id) {
+      <project-card [project]="project"></project-card>
+    }
+  </div>
+
+  <div class="gn-webring">
+    <a routerLink="/">« back to profile</a>
+  </div>
 </div>

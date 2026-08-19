@@ -1,63 +1,21 @@
 @use "abstracts/variables" as *;
 
-.fade {
-  animation: $animation-fade;
-}
-
 .presentation-section {
-  margin-bottom: $spacing-xbig;
-}
-
-.role,
-.name,
-.pronouns,
-.paragraph,
-.social-links {
-  font-size: $font-size-default;
-
-  @media screen and (max-width: 600px) {
+  &__blurb {
     font-size: $font-size-small;
+    color: $color-text-dark;
+    text-align: center;
+    margin-bottom: $spacing-medium;
   }
-}
 
-.name {
-  color: $color-text-dark;
-}
+  &__actions {
+    margin-top: $spacing-medium;
 
-.role {
-  color: $color-subtitle-dark;
-}
-
-.pronouns {
-  color: $color-subtitle-dark;
-}
-
-.paragraph {
-  color: $color-text-dark;
-  margin-top: $spacing-medium;
-}
-
-.social-links {
-  margin-left: 5rem;
-  margin-top: $spacing-medium;
-  margin-bottom: $spacing-big;
-
-  &__link {
-    color: $color-external-link-dark;
-
-    & a {
-      text-decoration: none;
-      color: $color-external-link-dark;
-      padding: 0.6rem 0;
-      display: inline-block;
-
-      &:hover {
-        text-decoration: underline wavy;
-      }
+    ::ng-deep .app-button {
+      display: block;
+      width: 100%;
+      margin-left: 0;
+      justify-content: center;
     }
-  }
-
-  @media screen and (max-width: 600px) {
-    margin-left: $spacing-big;
   }
 }

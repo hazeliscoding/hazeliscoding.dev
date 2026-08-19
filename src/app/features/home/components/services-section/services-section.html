@@ -1,19 +1,17 @@
-<div class="services-section fade">
-  <app-terminal-section
-    customTitle="Services"
-    customCommand="glow services.md"
-    [shortTerminalLine]="true"
-  >
-    <app-title title="Services" />
+<section class="services-section gn-panel fade">
+  <div class="gn-panel__head gn-panel__head--teal">
+    <span class="gn-panel__glyph">»</span>services
+  </div>
 
-    <ul class="services-section__list">
+  <div class="gn-panel__body">
+    <ul class="gn-list">
       @for (service of services; track service) {
-        <li class="services-section__item">{{ service }}</li>
+        <li>{{ service }}</li>
       }
     </ul>
 
     <app-button route="/portfolio">
       Portfolio
     </app-button>
-  </app-terminal-section>
-</div>
+  </div>
+</section>

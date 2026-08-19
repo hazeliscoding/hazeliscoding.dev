@@ -1,8 +1,10 @@
 @use "abstracts/variables" as *;
 
+// GlitterNet sticker button: hard border, offset shadow, press nudges 2px.
 .app-button {
-  display: block;
-  padding: 1rem 3rem;
+  display: flex;
+  align-items: center;
+  padding: 0.5rem 1.6rem;
   width: fit-content;
   margin-left: auto;
 
@@ -10,24 +12,33 @@
   border-radius: $border-radius-default;
 
   font-size: $font-size-default;
+  font-weight: $font-weight-bold;
 
   cursor: pointer;
   text-decoration: none;
 
-  background-color: $color-section-background-dark;
-  color: $color-accent;
+  background-color: $peach-400;
+  color: $brown-7;
+  box-shadow: $shadow-sticker;
+  transition: background-color $dur-fast;
 
-  &:hover {
-    border-color: $color-accent;
-    text-decoration: underline;
+  &:visited {
+    color: $brown-7;
   }
 
-  @media screen and (max-width: 600px) {
-    font-size: $font-size-small;
+  &:hover {
+    background-color: $peach-500;
+    color: $brown-7;
+  }
+
+  &:active {
+    box-shadow: none;
+    transform: translate(2px, 2px);
   }
 
   & svg {
-    width: 18px;
-    margin-right: $spacing-xsmall;
+    width: 12px;
+    margin-right: $spacing-small;
+    fill: $brown-7;
   }
 }

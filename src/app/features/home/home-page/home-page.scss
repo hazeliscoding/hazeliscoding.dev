@@ -1,10 +1,1 @@
-@use "abstracts/variables" as *;
-
-.home-page {
-  padding: 2rem clamp(1rem, 4vw, 8rem);
-
-  @media screen and (max-width: 768px) {
-    padding-top: 0;
-    margin-top: $spacing-medium;
-  }
-}
+// Layout comes from the global GlitterNet classes (gn-shell, gn-cols, gn-stack).

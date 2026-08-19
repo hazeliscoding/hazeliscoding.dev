@@ -1,46 +1,20 @@
 @use "abstracts/variables" as *;
 
-.error-page {
-  padding: 2rem 8rem;
-
-  @media screen and (max-width: 750px) {
-    padding: 0 1rem;
-    margin-top: $spacing-medium;
-  }
-
-  @media screen and (max-width: 600px) {
-    margin-top: $spacing-medium;
-    padding: 0 0.5rem;
-  }
-}
-
 .not-found {
   text-align: center;
-
-  color: $color-text-dark;
+  padding: $spacing-xbig $spacing-medium;
 
   &__title {
-    font-size: 4.5rem;
-
-    @media screen and (max-width: 600px) {
-      font-size: 3rem;
-    }
+    font-family: $font-family-display;
+    font-weight: $font-weight-normal;
+    font-size: $font-size-display-lg;
   }
 
   &__output {
-    font-size: 3.2rem;
-    margin-bottom: 2.5rem;
-
-    @media screen and (max-width: 600px) {
-      font-size: 2.8rem;
-    }
-  }
-
-  &__description {
+    font-family: $font-family-mono;
     font-size: $font-size-default;
-
-    @media screen and (max-width: 600px) {
-      font-size: $font-size-small;
-    }
+    color: $color-text-muted;
+    margin-bottom: $spacing-big;
+    overflow-wrap: anywhere;
   }
 }

@@ -1,9 +1,8 @@
 import { Component } from '@angular/core';
-import { TerminalSection } from '../../../../core/layout/terminal-section/terminal-section';
 
 @Component({
   selector: 'contact-section',
-  imports: [TerminalSection],
+  imports: [],
   templateUrl: './contact-section.html',
   styleUrl: './contact-section.scss',
 })

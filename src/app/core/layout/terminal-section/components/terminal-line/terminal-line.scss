@@ -1,25 +1,26 @@
 @use "abstracts/variables" as *;
 
+// The old terminal prompt survives as a mono "command" line — Courier,
+// sunken well, era-authentic.
 .terminal-line {
   display: flex;
-  gap: $spacing-medium;
+  gap: $spacing-small;
   overflow: hidden;
   white-space: nowrap;
   width: fit-content;
   margin-bottom: $spacing-big;
 
-  color: $color-text-dark;
+  font-family: $font-family-mono;
+  font-size: $font-size-small;
+  color: $color-text-muted;
 
-  font-size: $font-size-big;
+  background: $color-surface-sunken;
+  border: 1px solid $color-border;
+  padding: 0.3rem 0.8rem;
 
-  @media screen and (max-width: 600px) {
-    font-size: $font-size-default;
+  @media screen and (max-width: $bp-mobile-lg) {
     margin-bottom: $spacing-medium;
-    gap: $spacing-small;
-  }
-
-  @media screen and (max-width: 390px) {
-    font-size: $font-size-small;
+    gap: $spacing-xsmall;
   }
 }
 
@@ -28,7 +29,7 @@
 }
 
 .separator {
-  color: $color-text-dark;
+  color: $color-text-muted;
 }
 
 .path {
@@ -36,11 +37,11 @@
 }
 
 .prompt {
-  color: $color-text-dark;
+  color: $color-text-muted;
 }
 
 .command {
-  color: $color-success;
+  color: $color-accent;
 
   &--error {
     color: $color-danger;
@@ -48,14 +49,11 @@
 }
 
 .typing-animation {
-  animation:
-    typing 2s steps(25),
-    blink 0.5s step-end infinite alternate;
-
+  animation: typing 1.5s steps(25);
   max-width: 100%;
 
   // cursor
-  border-right: 10px solid $color-text-dark;
+  border-right: 0.8rem solid $color-text-faint;
 }
 
 @keyframes typing {
@@ -65,11 +63,5 @@
 
   100% {
     width: 22ch;
-  }
-}
-
-@keyframes blink {
-  50% {
-    border-color: transparent;
   }
 }

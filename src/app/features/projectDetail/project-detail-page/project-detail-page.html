@@ -1,56 +1,144 @@
-<div *ngIf="project" class="project-detail-page">
-  <app-terminal-section
-    [customTitle]="project.id"
-    [customCommand]="project.command || 'glow project.md'"
-    [shortTerminalLine]="true"
-    [isFirstTitle]="true"
-  >
-    <div class="project-detail-page__info">
-      <img
-        [src]="project.gif || project.image"
-        [alt]="project.title"
-        class="project-detail-page__thumbnail"
-        [class.project-gif]="project.gif"
-      />
+<div *ngIf="project" class="project-detail-page gn-shell">
+  <header class="gn-masthead fade">
+    <div class="gn-wordmark">{{ project.title }}<span class="gn-spark"> ✧</span></div>
+    <div class="gn-tagline">{{ project.description }}</div>
+  </header>
 
-      <div class="project-detail-page__description">
-        <h2>
-          {{ project.title }}
-        </h2>
-
-        <p>
-          {{ project.description }}
-        </p>
-
-        <div class="project-detail-page__links">
-          <a
-            *ngIf="project.links.github"
-            [href]="project.links.github"
-            target="_blank"
-            class="project-link"
+  <div class="gn-cols gn-cols--right">
+    <main class="gn-stack">
+      <section class="gn-panel gn-panel--pop">
+        <div class="gn-panel__head">
+          <span class="gn-panel__glyph">✎</span>screenshots
+          <span class="gn-panel__count"
+            >{{ currentSlide + 1 }} of {{ slides.length }}</span
           >
-            Repository
-          </a>
-
-          <a
-            *ngIf="project.links.nuget"
-            [href]="project.links.nuget"
-            target="_blank"
-            class="project-link"
-          >
-            NuGet
-          </a>
-
-          <a
-            *ngIf="project.links.demo"
-            [href]="project.links.demo"
-            target="_blank"
-            class="project-link"
-          >
-            Live Demo
-          </a>
         </div>
-      </div>
-    </div>
-  </app-terminal-section>
+
+        <div class="slideshow__stage">
+          <img
+            [src]="slides[currentSlide].src"
+            [alt]="slides[currentSlide].caption"
+          />
+        </div>
+
+        <div class="slideshow__controls" *ngIf="slides.length > 1">
+          <button
+            type="button"
+            class="slideshow__btn"
+            (click)="prevSlide()"
+            aria-label="Previous screenshot"
+          >
+            ◄ prev
+          </button>
+          <button
+            type="button"
+            class="slideshow__btn"
+            (click)="nextSlide()"
+            aria-label="Next screenshot"
+          >
+            next ►
+          </button>
+          <span class="slideshow__caption">{{
+            slides[currentSlide].caption
+          }}</span>
+        </div>
+      </section>
+
+      <section class="gn-panel">
+        <div class="gn-panel__head gn-panel__head--teal">
+          <span class="gn-panel__glyph">»</span>readme
+        </div>
+        <div class="gn-panel__body">
+          <p
+            class="project-detail-page__paragraph"
+            *ngFor="let paragraph of project.longDescription"
+          >
+            {{ paragraph }}
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <aside class="gn-stack">
+      <section class="gn-panel">
+        <div class="gn-panel__head">
+          <span class="gn-panel__glyph">★</span>project info
+        </div>
+        <div class="gn-panel__body">
+          <table class="gn-stat-table">
+            <tr *ngIf="project.status">
+              <td>status</td>
+              <td>{{ project.status }}</td>
+            </tr>
+            <tr *ngIf="project.year">
+              <td>year</td>
+              <td>{{ project.year }}</td>
+            </tr>
+            <tr *ngIf="project.stack">
+              <td>stack</td>
+              <td>{{ project.stack }}</td>
+            </tr>
+            <tr>
+              <td>screenshots</td>
+              <td>{{ slides.length }}</td>
+            </tr>
+          </table>
+
+          <div class="project-detail-page__actions">
+            <a
+              *ngIf="project.links.github"
+              [href]="project.links.github"
+              target="_blank"
+              class="gn-btn gn-btn--block"
+            >
+              view source
+            </a>
+            <a
+              *ngIf="project.links.demo"
+              [href]="project.links.demo"
+              target="_blank"
+              class="gn-btn gn-btn--secondary gn-btn--block"
+            >
+              live demo
+            </a>
+            <a
+              *ngIf="project.links.nuget"
+              [href]="project.links.nuget"
+              target="_blank"
+              class="gn-btn gn-btn--secondary gn-btn--block"
+            >
+              NuGet
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section class="gn-panel" *ngIf="project.tags?.length">
+        <div class="gn-panel__head gn-panel__head--teal">
+          <span class="gn-panel__glyph">✧</span>tags
+        </div>
+        <div class="gn-panel__body">
+          <div class="gn-tags">
+            <span class="gn-tag" *ngFor="let tag of project.tags">{{
+              tag
+            }}</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="gn-panel">
+        <div class="gn-panel__body">
+          <a class="gn-btn gn-btn--ghost gn-btn--block" routerLink="/portfolio"
+            >« all projects</a
+          >
+        </div>
+      </section>
+    </aside>
+  </div>
+
+  <div class="gn-webring">
+    <a routerLink="/portfolio">« all projects</a>
+    <span class="gn-webring__dot">✦</span>
+    <a routerLink="/">home</a>
+  </div>
 </div>

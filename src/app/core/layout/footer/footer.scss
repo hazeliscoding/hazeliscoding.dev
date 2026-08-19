@@ -2,49 +2,42 @@
 
 .footer {
   text-align: center;
-  padding: 4rem 2rem 4rem 2rem;
+  padding: 0 2rem 3.2rem;
+  max-width: 96rem;
+  margin: 0 auto;
 
-  color: $color-text-dark;
+  color: $color-text-muted;
 
-  @media screen and (max-width: 630px) {
-    padding: 4rem 0;
+  .gn-webring {
+    margin-bottom: $spacing-big;
   }
 
   &__heart {
-    color: $color-danger;
+    color: $peach-600;
+  }
+
+  &__author {
+    color: $teal-600;
+    font-weight: $font-weight-bold;
   }
 
   &__copyright {
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
-
-    @media screen and (max-width: 800px) {
-      font-size: 2rem;
-    }
-
-    @media screen and (max-width: 630px) {
-      font-size: 1.8rem;
-    }
+    font-size: $font-size-small;
+    margin-bottom: 0.4rem;
   }
 
   &__theme-credit {
-    font-size: 2.5rem;
-
-    @media screen and (max-width: 800px) {
-      font-size: 2.0rem;
-    }
-
-    @media screen and (max-width: 630px) {
-      font-size: 1.8rem;
-    }
+    font-family: $font-family-mono;
+    font-size: $font-size-xsmall;
+    color: $color-text-faint;
   }
 
   &__link {
-    color: $color-accent;
+    color: $color-external-link-dark;
     text-decoration: none;
 
     &:hover {
-      color: $color-accent-hover;
+      color: $color-link-hover;
     }
   }
 }

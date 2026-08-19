@@ -1,19 +1,27 @@
-<!-- TODO -->
-<!-- SNAP SCROLL -->
-<div class="featured-projects-section fade">
-  <app-terminal-section
-    customTitle="Featured Projects"
-    customCommand="glow f_projects.md"
-    [shortTerminalLine]="true"
-  >
-    <div class="featured-projects-section__warning">
-      *Swipe to the right to see the projects*
-    </div>
+<section class="featured-projects-section gn-panel fade">
+  <div class="gn-panel__head">
+    <span class="gn-panel__glyph">►</span>projects
+    <span class="gn-panel__count">{{ projectsData.length }} listed</span>
+  </div>
 
-    <div class="featured-projects-section__container">
-      @for (project of projectsData; track project.id) {
-        <project-card [project]="project"></project-card>
-      }
-    </div>
-  </app-terminal-section>
-</div>
+  <table class="gn-table">
+    @for (project of projectsData; track project.id) {
+      <tr (click)="openProject(project.id)">
+        <td class="gn-mark gn-mark--new">★</td>
+        <td>
+          <a
+            [routerLink]="['/portfolio', project.id]"
+            (click)="$event.stopPropagation()"
+            >{{ project.title }}</a
+          ><span class="gn-newtag">[active]</span>
+          <div class="gn-table__desc">{{ project.description }}</div>
+        </td>
+        <td class="gn-table__meta">
+          <span class="gn-mono">{{ project.tags?.[0] }}</span>
+        </td>
+      </tr>
+    }
+  </table>
+
+  <div class="gn-sig">sig: "it compiles on my machine, and my machine is always right"</div>
+</section>

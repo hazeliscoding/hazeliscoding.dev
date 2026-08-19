@@ -1,9 +1,35 @@
 @use "abstracts/variables" as *;
 
+// GlitterNet tokens exposed as CSS custom properties for template-level use.
 :root {
-  --scrollbar-thumb: #{$color-border};
-  --scrollbar-thumb-hover: #{$color-accent-hover};
-  --focus-ring: rgba(233, 84, 32, 0.45);
+  --peach-100: #{$peach-100};
+  --peach-200: #{$peach-200};
+  --peach-300: #{$peach-300};
+  --peach-400: #{$peach-400};
+  --peach-500: #{$peach-500};
+  --peach-600: #{$peach-600};
+  --teal-100: #{$teal-100};
+  --teal-200: #{$teal-200};
+  --teal-400: #{$teal-400};
+  --teal-600: #{$teal-600};
+  --page-bg: #{$cream-1};
+  --surface-card: #{$cream-0};
+  --surface-sunken: #{$cream-2};
+  --surface-stripe: #{$color-surface-stripe};
+  --text-body: #{$brown-7};
+  --text-muted: #{$brown-5};
+  --text-faint: #{$sand-4};
+  --border-line: #{$sand-3};
+  --border-strong: #{$brown-6};
+  --link: #{$color-link};
+  --link-visited: #{$color-link-visited};
+  --link-hover: #{$color-link-hover};
+  --shadow-sticker: #{$shadow-sticker};
+  --shadow-pop: #{$shadow-pop};
+
+  --scrollbar-thumb: #{$sand-4};
+  --scrollbar-thumb-hover: #{$peach-500};
+  --focus-ring: #{$teal-400};
 }
 
 * {
@@ -12,14 +38,14 @@
   box-sizing: border-box;
 
   &::selection {
-    color: #1a1a1a;
-    background: $color-accent;
+    color: $brown-7;
+    background: $teal-200;
     text-shadow: none;
   }
 
   &::-moz-selection {
-    color: #1a1a1a;
-    background: $color-accent;
+    color: $brown-7;
+    background: $teal-200;
     text-shadow: none;
   }
 }
@@ -39,10 +65,28 @@ html {
 body {
   background-color: $color-background-dark;
   color: $color-text-dark;
+  line-height: $line-height-default;
+}
+
+a {
+  color: $color-link;
+
+  &:visited {
+    color: $color-link-visited;
+  }
+
+  &:hover {
+    color: $color-link-hover;
+  }
+}
+
+:focus-visible {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 1px;
 }
 
 .fade {
-  animation: fade 3s;
+  animation: fade 200ms ease-out;
 }
 
 @keyframes fade {
@@ -50,16 +94,397 @@ body {
     opacity: 0;
   }
 
-  50% {
-    opacity: 0;
-  }
-
-  75% {
-    opacity: 0;
-  }
-
   100% {
     opacity: 1;
+  }
+}
+
+// ============================================================
+// GlitterNet layout system — the member-profile page idiom:
+// fixed shell, pixel wordmark masthead, two-column panel grid,
+// thread-row tables, sticker buttons, webring footer.
+// ============================================================
+
+.gn-shell {
+  max-width: 96rem;
+  margin: 0 auto;
+  padding: 1.6rem 1.2rem 2.4rem;
+}
+
+// ---- masthead ----
+.gn-masthead {
+  margin: 1.2rem 0 0.4rem;
+}
+
+.gn-wordmark {
+  font-family: $font-family-display;
+  font-size: $font-size-display-lg;
+  line-height: 1.15;
+  letter-spacing: 0.04em;
+  color: $brown-7;
+}
+
+.gn-spark {
+  color: $peach-500;
+}
+
+.gn-tagline {
+  color: $brown-5;
+  font-size: 1.5rem;
+}
+
+.gn-counter {
+  font-family: $font-family-mono;
+  font-size: $font-size-small;
+  color: $brown-5;
+  margin-bottom: $spacing-big;
+
+  b {
+    color: $teal-600;
+  }
+}
+
+// ---- layout ----
+.gn-cols {
+  display: grid;
+  gap: $spacing-big;
+  align-items: start;
+
+  &--left {
+    grid-template-columns: 25rem 1fr;
+  }
+
+  &--right {
+    grid-template-columns: 1fr 25rem;
+  }
+
+  @media screen and (max-width: 720px) {
+    &--left,
+    &--right {
+      grid-template-columns: 1fr;
+    }
+  }
+}
+
+.gn-stack {
+  display: grid;
+  gap: $spacing-big;
+}
+
+.gn-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: $spacing-big;
+  align-items: start;
+
+  @media screen and (max-width: 720px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+// ---- panel ----
+.gn-panel {
+  background: $cream-0;
+  border: $border-default;
+  box-shadow: $shadow-sticker;
+
+  &--pop {
+    box-shadow: $shadow-pop;
+  }
+
+  &__head {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    background: $peach-300;
+    border-bottom: 2px solid $brown-6;
+    padding: 0.4rem 1rem;
+    font-size: $font-size-default;
+    font-weight: $font-weight-bold;
+    color: $brown-7;
+
+    &--teal {
+      background: $teal-200;
+    }
+  }
+
+  &__glyph {
+    color: $brown-6;
+  }
+
+  &__count {
+    margin-left: auto;
+    font-weight: $font-weight-normal;
+    font-size: $font-size-xsmall;
+    color: $brown-6;
+  }
+
+  &__body {
+    padding: $spacing-medium;
+  }
+}
+
+// ---- sticker buttons ----
+.gn-btn {
+  display: inline-block;
+  box-sizing: border-box;
+  text-align: center;
+  text-decoration: none;
+  font-family: $font-family-default;
+  font-size: $font-size-default;
+  font-weight: $font-weight-bold;
+  color: $brown-7;
+  background: $peach-400;
+  border: $border-default;
+  border-radius: 0;
+  padding: 0.5rem 1.6rem;
+  cursor: pointer;
+  box-shadow: $shadow-sticker;
+  transition: background-color $dur-fast;
+
+  &:visited {
+    color: $brown-7;
+  }
+
+  &:hover {
+    background: $peach-500;
+    color: $brown-7;
+  }
+
+  &:active {
+    box-shadow: none;
+    transform: translate(2px, 2px);
+  }
+
+  &--secondary {
+    background: $teal-300;
+
+    &:hover {
+      background: $teal-400;
+    }
+  }
+
+  &--ghost {
+    background: $cream-0;
+
+    &:hover {
+      background: $cream-2;
+    }
+  }
+
+  &--block {
+    display: block;
+    width: 100%;
+  }
+}
+
+// ---- profile card bits ----
+.gn-avatar {
+  width: 9.6rem;
+  height: 9.6rem;
+  background: $cream-2;
+  border: 2px solid $brown-6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: $font-family-display;
+  font-size: $font-title-default;
+  color: $peach-500;
+  margin: 0 auto 0.8rem;
+}
+
+.gn-handle {
+  text-align: center;
+  font-family: $font-family-display;
+  font-size: $font-size-display-sm;
+  line-height: 1.15;
+}
+
+.gn-role {
+  text-align: center;
+  font-size: $font-size-small;
+  color: $brown-5;
+  margin-bottom: 0.8rem;
+}
+
+.gn-stat-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: $font-size-small;
+
+  td {
+    padding: 0.2rem 0;
+  }
+
+  td:last-child {
+    text-align: right;
+    font-family: $font-family-mono;
+    color: $teal-600;
+    font-weight: $font-weight-bold;
+  }
+}
+
+// ---- tags ----
+.gn-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.gn-tag {
+  display: inline-flex;
+  align-items: center;
+  background: $teal-100;
+  color: $teal-700;
+  border: 1px solid $teal-400;
+  border-radius: 999px;
+  padding: 0.2rem 1rem;
+  font-size: $font-size-small;
+
+  &--peach {
+    background: $peach-100;
+    color: $peach-700;
+    border-color: $peach-400;
+  }
+}
+
+.gn-newtag {
+  font-size: $font-size-xsmall;
+  font-weight: $font-weight-bold;
+  color: $teal-600;
+  margin-left: 0.5rem;
+}
+
+// ---- contact / plain lists ----
+.gn-contact {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: $font-size-small;
+
+  li {
+    padding: 0.3rem 0;
+    border-bottom: 1px solid $sand-3;
+  }
+
+  li:last-child {
+    border-bottom: none;
+  }
+
+  &__lbl {
+    display: inline-block;
+    width: 7rem;
+    color: $brown-5;
+  }
+}
+
+.gn-list {
+  margin: 0 0 $spacing-medium;
+  padding: 0;
+  list-style: none;
+  font-size: $font-size-default;
+
+  li {
+    padding: 0.3rem 0;
+    border-bottom: 1px solid $sand-3;
+
+    &::before {
+      content: "» ";
+      color: $peach-600;
+    }
+  }
+
+  li:last-child {
+    border-bottom: none;
+  }
+}
+
+// ---- thread-row table ----
+.gn-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: $font-size-default;
+
+  td {
+    border-bottom: 1px solid $sand-3;
+    padding: 0.6rem 0.8rem;
+    vertical-align: top;
+  }
+
+  tr:last-child td {
+    border-bottom: none;
+  }
+
+  tr:nth-child(even) {
+    background: $color-surface-stripe;
+  }
+
+  tr:hover {
+    background: $teal-100;
+    cursor: pointer;
+  }
+
+  &__desc {
+    font-size: $font-size-small;
+    color: $brown-5;
+  }
+
+  &__meta {
+    width: 10rem;
+    text-align: right;
+    font-size: $font-size-xsmall;
+    color: $brown-5;
+  }
+}
+
+.gn-mark {
+  width: 2.2rem;
+  text-align: center;
+  color: $sand-4;
+  font-size: 1.4rem;
+  padding-top: 0.9rem;
+
+  &--new {
+    color: $peach-600;
+  }
+}
+
+.gn-mono {
+  font-family: $font-family-mono;
+  color: $teal-600;
+}
+
+// ---- flourishes ----
+.gn-quote {
+  background: $cream-2;
+  border-left: 3px solid $teal-400;
+  padding: 0.6rem 0.8rem;
+  font-family: $font-family-mono;
+  font-size: $font-size-small;
+  margin-top: 0.8rem;
+}
+
+.gn-sig {
+  border-top: 1px dashed $sand-3;
+  padding: 0.6rem 1rem;
+  font-family: $font-family-mono;
+  font-size: $font-size-small;
+  color: $brown-5;
+}
+
+.gn-webring {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: $spacing-big;
+  background: $cream-2;
+  border: 1px solid $sand-3;
+  padding: 0.8rem;
+  font-size: $font-size-small;
+  margin-top: $spacing-xbig;
+
+  &__dot {
+    color: $sand-4;
   }
 }
 

@@ -1,16 +1,31 @@
-<!-- TODO -->
-<!-- Fade animation only at the first time the user logs into page -->
-<!-- Replay the animation after reload -->
-<div class="home-page">
-  <presentation-section />
+<div class="home-page gn-shell">
+  <header class="gn-masthead fade">
+    <div class="gn-wordmark">hazel.exe<span class="gn-spark"> ✧</span></div>
+    <div class="gn-tagline">
+      software developer — full-stack apps built with care and scalability
+    </div>
+  </header>
 
-  <services-section />
+  <div class="gn-counter">
+    member profile · <b>open to collaboration</b> · last update
+    {{ lastUpdate }}
+  </div>
 
-  <tech-stack-section />
+  <div class="gn-cols gn-cols--left">
+    <aside class="gn-stack">
+      <presentation-section />
 
-  <featured-projects-section />
+      <tech-stack-section />
 
-  <contact-section />
+      <contact-section />
+    </aside>
+
+    <main class="gn-stack">
+      <services-section />
+
+      <featured-projects-section />
+    </main>
+  </div>
 </div>
 
 <app-footer />

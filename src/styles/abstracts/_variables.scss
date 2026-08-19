@@ -1,75 +1,134 @@
 @use "abstracts/animations" as *;
 
-$animation-fade: fade 3s;
+// ============================================================
+// GlitterNet design system — y2k web-1.0 forum: dense, readable,
+// table-driven, with pastel peach + teal and sticker shadows.
+// Legacy variable names are kept and remapped so existing
+// component styles pick up the new theme.
+// ============================================================
 
-$font-title-default: 3.5rem;
+$animation-fade: fade 200ms ease-out;
 
-$font-size-xsmall: 1.4rem;
-$font-size-small: 2rem;
-$font-size-default: 2.5rem;
-$font-size-big: 3rem;
-$font-size-xbig: 4rem;
+// ---- Type ----
+// Display = VT323 (pixel, 22px+, never body). Body = Trebuchet MS
+// system stack, dense 13px. Mono = Courier New.
+$font-family-display: "VT323", "Courier New", monospace;
+$font-family-default: "Trebuchet MS", "Segoe UI", Tahoma, Verdana, sans-serif;
+$font-family-mono: "Courier New", Courier, monospace;
 
-$font-weight-normal: 400;
-$font-weight-bold: 500;
-
-$font-family-default: "JetBrains Mono", monospace;
+// Root font-size is ~10px (see styles.scss html rule), so 1rem ≈ 10px.
+$font-size-xsmall: 1.1rem; // --fs-tiny
+$font-size-small: 1.2rem; // --fs-small
+$font-size-default: 1.3rem; // --fs-body
+$font-size-big: 1.7rem; // --fs-h3
+$font-size-xbig: 2rem; // --fs-h2
+$font-title-default: 3rem; // --fs-display (VT323 runs small; size up)
+$font-size-display-sm: 2.2rem;
+$font-size-display-lg: 4.4rem;
 
 $font-weight-normal: 400;
 $font-weight-bold: 700;
 
-$spacing-xsmall: 0.5rem;
-$spacing-small: 1rem;
-$spacing-medium: 2rem;
-$spacing-big: 3rem;
-$spacing-xbig: 4rem;
+$spacing-xsmall: 0.4rem;
+$spacing-small: 0.8rem;
+$spacing-medium: 1.2rem;
+$spacing-big: 1.6rem;
+$spacing-xbig: 2.4rem;
 
-$color-ubuntu-bg: #2c001e;
-$color-ubuntu-surface: #300a24;
-$color-ubuntu-border: #5e2750;
+$line-height-default: 1.55;
 
-$color-ubuntu-text: #eeeeec;
-$color-ubuntu-muted: #c0bfbc;
+// ---- GlitterNet palette ----
+$peach-100: #fff1e8;
+$peach-200: #ffddc9;
+$peach-300: #ffc4a5;
+$peach-400: #ffaa88;
+$peach-500: #f28d63;
+$peach-600: #d96f45;
+$peach-700: #a84e2c;
 
-$color-ubuntu-orange: #e95420;
-$color-ubuntu-orange-hover: #ff6f3d;
+$teal-100: #e4f7f3;
+$teal-200: #bdeae1;
+$teal-300: #7fd6c6;
+$teal-400: #44bbaa;
+$teal-500: #2e9c8d;
+$teal-600: #207568;
+$teal-700: #175248;
 
-$color-ubuntu-green: #8ae234;
-$color-ubuntu-red: #ef2929;
-$color-ubuntu-blue: #729fcf;
+$cream-0: #fffdf9;
+$cream-1: #fff8f0;
+$cream-2: #f7ecdf;
+$sand-3: #e8d9c8;
+$sand-4: #c9b6a2;
+$brown-5: #8f7a67;
+$brown-6: #5d4b3c;
+$brown-7: #3a2d23;
 
-$color-accent: $color-ubuntu-orange;
-$color-accent-hover: $color-ubuntu-orange-hover;
-$color-success: $color-ubuntu-green;
-$color-danger: $color-ubuntu-red;
-$color-info: $color-ubuntu-blue;
+// Web 1.0 link colors, kawaii-tuned
+$color-link: #2266cc;
+$color-link-visited: #8a5ec4;
+$color-link-hover: $peach-600;
 
-$border-default: $color-ubuntu-border 2px solid;
-$border-radius-default: 8px;
+// ---- Legacy aliases (remapped; keep every old name defined) ----
+$color-ubuntu-bg: $cream-1;
+$color-ubuntu-surface: $cream-0;
+$color-ubuntu-border: $brown-6;
 
-$color-border: $color-ubuntu-border;
+$color-ubuntu-text: $brown-7;
+$color-ubuntu-muted: $brown-5;
 
-$color-background-dark: $color-ubuntu-bg;
-$color-background-light: #f6f5f4;
+$color-ubuntu-orange: $peach-600;
+$color-ubuntu-orange-hover: $peach-500;
 
-$color-text-dark: $color-ubuntu-text;
-$color-text-light: #71665f;
+$color-ubuntu-green: $teal-600;
+$color-ubuntu-red: #c23030;
+$color-ubuntu-blue: $color-link;
 
-$color-title-dark: $color-ubuntu-text;
-$color-title-light: #6986ba;
+$color-accent: $peach-600;
+$color-accent-hover: $peach-500;
+$color-success: $teal-600;
+$color-danger: #c23030;
+$color-info: $color-link;
 
-$color-subtitle-dark: $color-accent;
-$color-subtitle-light: #4f9a9c;
+// Hard 90s edges: strong 2px borders, no rounding, sticker shadows.
+$border-default: $brown-6 2px solid;
+$border-radius-default: 0;
 
-$color-external-link-dark: $color-accent;
-$color-external-link-light: #ad86e1;
+$color-border: $sand-3;
+$color-border-strong: $brown-6;
 
-$color-section-background-dark: $color-ubuntu-surface;
-$color-section-background-light: #f8f4f0;
+$color-background-dark: $cream-1; // page background (names kept, values light now)
+$color-background-light: $cream-1;
 
-$line-height-default: 1.4;
+$color-text-dark: $brown-7;
+$color-text-light: $brown-5;
+$color-text-muted: $brown-5;
+$color-text-faint: $sand-4;
 
-$box-shadow-default: 0 12px 28px rgba(0, 0, 0, 0.35);
+$color-title-dark: $brown-7;
+$color-title-light: $brown-7;
+
+$color-subtitle-dark: $teal-600;
+$color-subtitle-light: $teal-600;
+
+$color-external-link-dark: $color-link;
+$color-external-link-light: $color-link;
+
+$color-section-background-dark: $cream-0; // card surface
+$color-section-background-light: $cream-0;
+
+$color-surface-sunken: $cream-2;
+$color-surface-stripe: #fdf4ea;
+
+// Hard offset shadows — zero blur, y2k sticker look.
+$shadow-sticker: 2px 2px 0 $sand-3;
+$shadow-pop: 3px 3px 0 $teal-200;
+$shadow-modal: 4px 4px 0 rgba(93, 75, 60, 0.25);
+$box-shadow-default: $shadow-sticker;
+
+// Motion — snappy, tiny bounce; no long fades.
+$ease-snap: cubic-bezier(0.2, 0.9, 0.3, 1.2);
+$dur-fast: 120ms;
+$dur-med: 200ms;
 
 // Responsive breakpoints
 $bp-desktop-lg: 1400px;
