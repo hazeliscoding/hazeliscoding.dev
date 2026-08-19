@@ -68,6 +68,7 @@
         </div>
         <div class="gn-panel__body">
           <table class="gn-stat-table">
+            <tbody>
             <tr *ngIf="project.status">
               <td>status</td>
               <td>{{ project.status }}</td>
@@ -84,6 +85,7 @@
               <td>screenshots</td>
               <td>{{ slides.length }}</td>
             </tr>
+            </tbody>
           </table>
 
           <div class="project-detail-page__actions">

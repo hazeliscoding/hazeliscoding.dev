@@ -5,6 +5,7 @@
   </div>
 
   <table class="gn-table">
+    <tbody>
     @for (project of projectsData; track project.id) {
       <tr (click)="openProject(project.id)">
         <td class="gn-mark gn-mark--new">★</td>
@@ -21,6 +22,7 @@
         </td>
       </tr>
     }
+    </tbody>
   </table>
 
   <div class="gn-sig">sig: "it compiles on my machine, and my machine is always right"</div>
