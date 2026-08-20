@@ -21,18 +21,26 @@ export class ProjectDetailPage {
 
   currentSlide = 0;
   lightboxOpen = false;
+  lightboxZoomed = false;
 
   openLightbox() {
     this.lightboxOpen = true;
+    this.lightboxZoomed = false;
   }
 
   closeLightbox() {
     this.lightboxOpen = false;
+    this.lightboxZoomed = false;
+  }
+
+  toggleZoom() {
+    this.lightboxZoomed = !this.lightboxZoomed;
   }
 
   @HostListener('window:keydown.escape')
   onEscape() {
     this.lightboxOpen = false;
+    this.lightboxZoomed = false;
   }
 
   get slides(): ProjectImage[] {
@@ -45,10 +53,12 @@ export class ProjectDetailPage {
   prevSlide() {
     this.currentSlide =
       (this.currentSlide - 1 + this.slides.length) % this.slides.length;
+    this.lightboxZoomed = false;
   }
 
   nextSlide() {
     this.currentSlide = (this.currentSlide + 1) % this.slides.length;
+    this.lightboxZoomed = false;
   }
 
   @HostListener('window:keydown.arrowLeft')

@@ -168,10 +168,15 @@
         </button>
       </div>
 
-      <div class="lightbox__stage">
+      <div
+        class="lightbox__stage"
+        [class.lightbox__stage--zoomed]="lightboxZoomed"
+      >
         <img
           [src]="slides[currentSlide].src"
           [alt]="slides[currentSlide].caption"
+          [title]="lightboxZoomed ? 'click to fit' : 'click to zoom in'"
+          (click)="toggleZoom()"
         />
       </div>
 
