@@ -28,7 +28,7 @@
     font-weight: $font-weight-normal;
     line-height: 1.15;
     letter-spacing: 0.04em;
-    color: $color-title-dark;
+    color: $color-on-accent;
   }
 
   h1.terminal-section__title {
@@ -36,7 +36,7 @@
   }
 
   &__glyph {
-    color: $peach-700;
+    color: $color-on-accent;
     margin-right: 0.8rem;
   }
 

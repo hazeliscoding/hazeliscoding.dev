@@ -1,35 +1,116 @@
 @use "abstracts/variables" as *;
 
-// GlitterNet tokens exposed as CSS custom properties for template-level use.
-:root {
-  --peach-100: #{$peach-100};
-  --peach-200: #{$peach-200};
-  --peach-300: #{$peach-300};
-  --peach-400: #{$peach-400};
-  --peach-500: #{$peach-500};
-  --peach-600: #{$peach-600};
-  --teal-100: #{$teal-100};
-  --teal-200: #{$teal-200};
-  --teal-400: #{$teal-400};
-  --teal-600: #{$teal-600};
-  --page-bg: #{$cream-1};
-  --surface-card: #{$cream-0};
-  --surface-sunken: #{$cream-2};
-  --surface-stripe: #{$color-surface-stripe};
-  --text-body: #{$brown-7};
-  --text-muted: #{$brown-5};
-  --text-faint: #{$sand-4};
-  --border-line: #{$sand-3};
-  --border-strong: #{$brown-6};
-  --link: #{$color-link};
-  --link-visited: #{$color-link-visited};
-  --link-hover: #{$color-link-hover};
-  --shadow-sticker: #{$shadow-sticker};
-  --shadow-pop: #{$shadow-pop};
+// ============================================================
+// Theme system — high-contrast dark is the default; light mode
+// follows the OS via prefers-color-scheme, and a data-theme
+// attribute on <html> (set by the header toggle) overrides it.
+// SCSS variables in abstracts/_variables.scss resolve to these.
+// ============================================================
+@mixin gn-dark {
+  color-scheme: dark;
 
-  --scrollbar-thumb: #{$sand-4};
-  --scrollbar-thumb-hover: #{$peach-500};
-  --focus-ring: #{$teal-400};
+  // "peach" scale = bright green accent
+  --gn-peach-100: #00220f;
+  --gn-peach-200: #004422;
+  --gn-peach-300: #00e65c;
+  --gn-peach-400: #00e65c;
+  --gn-peach-500: #33ff85;
+  --gn-peach-600: #00ff66;
+  --gn-peach-700: #99ffc2;
+
+  // "teal" scale = bright cyan accent
+  --gn-teal-100: #002222;
+  --gn-teal-200: #00d9d9;
+  --gn-teal-300: #00b3b3;
+  --gn-teal-400: #00ffff;
+  --gn-teal-500: #33ffff;
+  --gn-teal-600: #4dffff;
+  --gn-teal-700: #b3ffff;
+
+  // surfaces + structure
+  --gn-cream-0: #000000;
+  --gn-cream-1: #000000;
+  --gn-cream-2: #0d0d0d;
+  --gn-stripe: #111111;
+  --gn-sand-3: #4d4d4d;
+  --gn-sand-4: #808080;
+  --gn-brown-5: #c0c0c0;
+  --gn-brown-6: #ffffff;
+  --gn-brown-7: #ffffff;
+  --gn-on-accent: #000000;
+
+  // links + semantic
+  --gn-link: #66b3ff;
+  --gn-link-visited: #cc99ff;
+  --gn-danger: #ff5555;
+
+  // bevels
+  --gn-bevel-lite: #ffffff;
+  --gn-bevel-dark: #4d4d4d;
+}
+
+@mixin gn-light {
+  color-scheme: light;
+
+  // accents darkened one notch so black-on-fill and accent-on-white both hold
+  --gn-peach-100: #e6f9ee;
+  --gn-peach-200: #b3eeca;
+  --gn-peach-300: #00c853;
+  --gn-peach-400: #00c853;
+  --gn-peach-500: #00a844;
+  --gn-peach-600: #007a32;
+  --gn-peach-700: #005c26;
+
+  --gn-teal-100: #e0f7fa;
+  --gn-teal-200: #00c2d1;
+  --gn-teal-300: #00a5b3;
+  --gn-teal-400: #007a87;
+  --gn-teal-500: #00919e;
+  --gn-teal-600: #006974;
+  --gn-teal-700: #00505c;
+
+  --gn-cream-0: #ffffff;
+  --gn-cream-1: #ffffff;
+  --gn-cream-2: #f2f2f2;
+  --gn-stripe: #f7f7f7;
+  --gn-sand-3: #b3b3b3;
+  --gn-sand-4: #8c8c8c;
+  --gn-brown-5: #595959;
+  --gn-brown-6: #000000;
+  --gn-brown-7: #000000;
+  --gn-on-accent: #000000;
+
+  --gn-link: #0f62fe;
+  --gn-link-visited: #7a3fc4;
+  --gn-danger: #c62828;
+
+  --gn-bevel-lite: #ffffff;
+  --gn-bevel-dark: #8c8c8c;
+}
+
+:root {
+  @include gn-dark;
+
+  --scrollbar-thumb: var(--gn-sand-4);
+  --scrollbar-thumb-hover: var(--gn-peach-500);
+  --focus-ring: var(--gn-teal-400);
+}
+
+// OS preference applies only when no manual override is set.
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) {
+    @include gn-light;
+  }
+}
+
+// Manual overrides from the header toggle (kept after the media query so
+// data-theme="light" wins in dark-OS + light-choice combinations).
+:root[data-theme="light"] {
+  @include gn-light;
+}
+
+:root[data-theme="dark"] {
+  @include gn-dark;
 }
 
 * {
@@ -38,13 +119,13 @@
   box-sizing: border-box;
 
   &::selection {
-    color: $brown-7;
+    color: $color-on-accent;
     background: $teal-200;
     text-shadow: none;
   }
 
   &::-moz-selection {
-    color: $brown-7;
+    color: $color-on-accent;
     background: $teal-200;
     text-shadow: none;
   }
@@ -201,7 +282,7 @@ a {
     padding: 0.4rem 1rem;
     font-size: $font-size-default;
     font-weight: $font-weight-bold;
-    color: $brown-7;
+    color: $color-on-accent;
 
     &--teal {
       background: $teal-200;
@@ -209,14 +290,14 @@ a {
   }
 
   &__glyph {
-    color: $brown-6;
+    color: $color-on-accent;
   }
 
   &__count {
     margin-left: auto;
     font-weight: $font-weight-normal;
     font-size: $font-size-xsmall;
-    color: $brown-6;
+    color: $color-on-accent;
   }
 
   &__body {
@@ -233,7 +314,7 @@ a {
   font-family: $font-family-default;
   font-size: $font-size-default;
   font-weight: $font-weight-bold;
-  color: $brown-7;
+  color: $color-on-accent;
   background: $peach-400;
   border: $border-default;
   border-radius: 0;
@@ -243,12 +324,12 @@ a {
   transition: background-color $dur-fast;
 
   &:visited {
-    color: $brown-7;
+    color: $color-on-accent;
   }
 
   &:hover {
     background: $peach-500;
-    color: $brown-7;
+    color: $color-on-accent;
   }
 
   &:active {
@@ -266,9 +347,15 @@ a {
 
   &--ghost {
     background: $cream-0;
+    color: $brown-7;
+
+    &:visited {
+      color: $brown-7;
+    }
 
     &:hover {
       background: $cream-2;
+      color: $brown-7;
     }
   }
 
@@ -336,15 +423,16 @@ a {
   align-items: center;
   background: $teal-100;
   color: $teal-700;
-  border: 1px solid $teal-400;
+  border: 2px solid $teal-400;
   border-radius: 999px;
   padding: 0.2rem 1rem;
   font-size: $font-size-small;
+  font-weight: $font-weight-bold;
 
   &--peach {
     background: $peach-100;
     color: $peach-700;
-    border-color: $peach-400;
+    border-color: $peach-600;
   }
 }
 

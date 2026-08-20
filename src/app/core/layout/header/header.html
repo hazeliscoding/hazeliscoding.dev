@@ -76,5 +76,15 @@
     >
   </nav>
 
+  <button
+    type="button"
+    class="theme-toggle"
+    (click)="cycleTheme()"
+    [attr.aria-label]="'Theme: ' + theme + '. Click to change.'"
+    title="theme"
+  >
+    [{{ theme }}]
+  </button>
+
   <span class="header__crumb">⌂ members » <b>hazel</b></span>
 </header>

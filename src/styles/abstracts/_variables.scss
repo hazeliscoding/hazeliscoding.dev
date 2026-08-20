@@ -37,35 +37,43 @@ $spacing-xbig: 2.4rem;
 
 $line-height-default: 1.55;
 
-// ---- GlitterNet palette ----
-$peach-100: #fff1e8;
-$peach-200: #ffddc9;
-$peach-300: #ffc4a5;
-$peach-400: #ffaa88;
-$peach-500: #f28d63;
-$peach-600: #d96f45;
-$peach-700: #a84e2c;
+// ---- High-contrast palette (Windows HC energy, dark + light) ----
+// Actual color values live in styles.scss as --gn-* custom properties,
+// switched at runtime by prefers-color-scheme. Names kept from the original
+// peach/teal/cream scales so every component remaps automatically:
+// "peach" = green accent, "teal" = cyan accent, "cream" = surfaces,
+// "sand/brown" = structure. Bright fills carry $color-on-accent text.
+$peach-100: var(--gn-peach-100); // subtle tint bg
+$peach-200: var(--gn-peach-200);
+$peach-300: var(--gn-peach-300); // panel head fill (inverse video)
+$peach-400: var(--gn-peach-400); // button fill
+$peach-500: var(--gn-peach-500); // button hover
+$peach-600: var(--gn-peach-600); // accent text on surface
+$peach-700: var(--gn-peach-700);
 
-$teal-100: #e4f7f3;
-$teal-200: #bdeae1;
-$teal-300: #7fd6c6;
-$teal-400: #44bbaa;
-$teal-500: #2e9c8d;
-$teal-600: #207568;
-$teal-700: #175248;
+$teal-100: var(--gn-teal-100); // hover-row tint
+$teal-200: var(--gn-teal-200); // teal panel head / topbar fill
+$teal-300: var(--gn-teal-300); // secondary button fill
+$teal-400: var(--gn-teal-400); // tag borders
+$teal-500: var(--gn-teal-500);
+$teal-600: var(--gn-teal-600); // secondary accent on surface
+$teal-700: var(--gn-teal-700); // tag text
 
-$cream-0: #fffdf9;
-$cream-1: #fff8f0;
-$cream-2: #f7ecdf;
-$sand-3: #e8d9c8;
-$sand-4: #c9b6a2;
-$brown-5: #8f7a67;
-$brown-6: #5d4b3c;
-$brown-7: #3a2d23;
+$cream-0: var(--gn-cream-0); // card surface
+$cream-1: var(--gn-cream-1); // page background
+$cream-2: var(--gn-cream-2); // sunken wells
+$sand-3: var(--gn-sand-3); // hairline borders / sticker shadows
+$sand-4: var(--gn-sand-4); // faint text
+$brown-5: var(--gn-brown-5); // muted text
+$brown-6: var(--gn-brown-6); // strong borders
+$brown-7: var(--gn-brown-7); // body text
 
-// Web 1.0 link colors, kawaii-tuned
-$color-link: #2266cc;
-$color-link-visited: #8a5ec4;
+// Contrast text for bright accent fills (title bars, buttons, selection)
+$color-on-accent: var(--gn-on-accent);
+
+// Web 1.0 link colors (blue links stay)
+$color-link: var(--gn-link);
+$color-link-visited: var(--gn-link-visited);
 $color-link-hover: $peach-600;
 
 // ---- Legacy aliases (remapped; keep every old name defined) ----
@@ -80,13 +88,13 @@ $color-ubuntu-orange: $peach-600;
 $color-ubuntu-orange-hover: $peach-500;
 
 $color-ubuntu-green: $teal-600;
-$color-ubuntu-red: #c23030;
+$color-ubuntu-red: var(--gn-danger);
 $color-ubuntu-blue: $color-link;
 
 $color-accent: $peach-600;
 $color-accent-hover: $peach-500;
 $color-success: $teal-600;
-$color-danger: #c23030;
+$color-danger: var(--gn-danger);
 $color-info: $color-link;
 
 // Hard 90s edges: strong 2px borders, no rounding, sticker shadows.
@@ -117,12 +125,16 @@ $color-section-background-dark: $cream-0; // card surface
 $color-section-background-light: $cream-0;
 
 $color-surface-sunken: $cream-2;
-$color-surface-stripe: #fdf4ea;
+$color-surface-stripe: var(--gn-stripe);
 
-// Hard offset shadows — zero blur, y2k sticker look.
+// Bevel edges for web-1.0 outset/inset buttons
+$bevel-lite: var(--gn-bevel-lite);
+$bevel-dark: var(--gn-bevel-dark);
+
+// Hard offset shadows — zero blur, y2k sticker look (green-glow tinted).
 $shadow-sticker: 2px 2px 0 $sand-3;
 $shadow-pop: 3px 3px 0 $teal-200;
-$shadow-modal: 4px 4px 0 rgba(93, 75, 60, 0.25);
+$shadow-modal: 4px 4px 0 rgba(0, 0, 0, 0.6);
 $box-shadow-default: $shadow-sticker;
 
 // Motion — snappy, tiny bounce; no long fades.

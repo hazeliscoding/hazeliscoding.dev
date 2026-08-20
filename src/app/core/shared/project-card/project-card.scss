@@ -34,10 +34,11 @@
     padding: 0.4rem 1rem;
     font-size: $font-size-default;
     font-weight: $font-weight-bold;
+    color: $color-on-accent;
   }
 
   &__glyph {
-    color: $teal-600;
+    color: $color-on-accent;
     margin-right: 0.8rem;
     font-size: $font-size-small;
   }

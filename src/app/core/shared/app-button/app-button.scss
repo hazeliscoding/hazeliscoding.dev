@@ -18,17 +18,17 @@
   text-decoration: none;
 
   background-color: $peach-400;
-  color: $brown-7;
+  color: $color-on-accent;
   box-shadow: $shadow-sticker;
   transition: background-color $dur-fast;
 
   &:visited {
-    color: $brown-7;
+    color: $color-on-accent;
   }
 
   &:hover {
     background-color: $peach-500;
-    color: $brown-7;
+    color: $color-on-accent;
   }
 
   &:active {
@@ -39,6 +39,6 @@
   & svg {
     width: 12px;
     margin-right: $spacing-small;
-    fill: $brown-7;
+    fill: $color-on-accent;
   }
 }
