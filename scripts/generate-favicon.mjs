@@ -12,12 +12,12 @@ import { dirname, join } from 'node:path';
 
 const publicDir = join(dirname(fileURLToPath(import.meta.url)), '..', 'public');
 
-// A single ✧ — the wordmark's sparkle, peach outline on cream, brown frame.
+// A single ✧ — the wordmark's sparkle, bright green on black, white HC frame.
 const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
-  <rect width="16" height="16" fill="#5d4b3c" shape-rendering="crispEdges"/>
-  <rect x="1" y="1" width="14" height="14" fill="#fff8f0" shape-rendering="crispEdges"/>
+  <rect width="16" height="16" fill="#ffffff" shape-rendering="crispEdges"/>
+  <rect x="1" y="1" width="14" height="14" fill="#000000" shape-rendering="crispEdges"/>
   <path d="M8 2 C8.6 5.4 10.6 7.4 14 8 C10.6 8.6 8.6 10.6 8 14 C7.4 10.6 5.4 8.6 2 8 C5.4 7.4 7.4 5.4 8 2 Z"
-    fill="none" stroke="#f28d63" stroke-width="1.4" stroke-linejoin="round"/>
+    fill="none" stroke="#00ff66" stroke-width="1.4" stroke-linejoin="round"/>
 </svg>`;
 
 const render = (size) =>
