@@ -162,4 +162,39 @@
     padding: 0.1rem 0.35rem;
     font-family: $font-family-mono;
   }
+
+  // Rendered mermaid diagrams replace their source <pre> block.
+  .mermaid-diagram {
+    margin: 0 0 $spacing-medium;
+    padding: $spacing-medium;
+    background: $color-surface-sunken;
+    border: 1px solid $color-border;
+    border-radius: $border-radius-default;
+    overflow-x: auto;
+    text-align: center;
+
+    svg {
+      max-width: 100%;
+      height: auto;
+    }
+  }
+
+  table {
+    width: 100%;
+    margin: 0 0 $spacing-medium;
+    border-collapse: collapse;
+    font-size: $font-size-small;
+  }
+
+  :is(th, td) {
+    padding: $spacing-small $spacing-medium;
+    border: 1px solid $color-border;
+    text-align: left;
+  }
+
+  th {
+    background: $color-surface-sunken;
+    color: $color-title-dark;
+    font-weight: $font-weight-bold;
+  }
 }

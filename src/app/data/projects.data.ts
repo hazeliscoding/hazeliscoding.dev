@@ -22,6 +22,8 @@ export interface Project {
   status?: string;
   year?: string;
   stack?: string;
+  /** Slug of a related blog post, linked from the project page. */
+  writeup?: string;
 }
 
 export const projectsData: Project[] = [
@@ -73,6 +75,7 @@ export const projectsData: Project[] = [
     links: {
       github: 'https://github.com/hazeliscoding/mcp-gateway',
     },
+    writeup: 'governing-tool-access-for-ai-agents',
     tags: [
       '.NET 10',
       'ASP.NET Core',
