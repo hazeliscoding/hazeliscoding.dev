@@ -28,6 +28,61 @@ export interface Project {
 
 export const projectsData: Project[] = [
   {
+    id: 'incident-control-plane',
+    title: 'Incident Control Plane',
+    description:
+      'An agent-driven incident response system: it investigates operational alerts, gathers evidence, proposes remediation, requests human approval for risky actions, executes approved runbooks, and verifies recovery.',
+    longDescription: [
+      'Most "AIOps" demos give a model unrestricted infrastructure access. This project shows the opposite: the agent coordinates narrow, typed, permission-classified tools over MCP, while a deterministic policy engine — never the LLM — decides what requires approval. The agent only gathers evidence and recommends a diagnosis; it can never approve its own request or move an incident through a transition the state machine forbids.',
+      'A checkpointed background worker advances each incident one step per tick and persists after every step, so a crash loses nothing. Findings are rejected unless every one cites evidence ids actually returned by tools in that run, evidence is stored as a summary plus a SHA-256 hash, and four-eyes approval guards make duplicate approvals structurally incapable of triggering a second execution.',
+      'Runs end-to-end locally against LocalStack with three reproducible failure scenarios, an Angular operations console with a dedicated approval screen, full OpenTelemetry tracing across every service, and a ten-scenario evaluation harness — including guardrail-refusal and prompt-injection cases — that fails CI on any regression.',
+    ],
+    image: 'images/projects/incident-control-plane/incident-detail.png',
+    gif: 'images/projects/incident-control-plane/demo.gif',
+    images: [
+      {
+        src: 'images/projects/incident-control-plane/demo.gif',
+        caption: 'end-to-end demo — bad deploy → diagnosis → approval → rollback → resolved',
+      },
+      {
+        src: 'images/projects/incident-control-plane/incident-list.png',
+        caption: 'incident list — live workflow status',
+      },
+      {
+        src: 'images/projects/incident-control-plane/incident-detail.png',
+        caption: 'incident detail — diagnosis, evidence, timeline',
+      },
+      {
+        src: 'images/projects/incident-control-plane/approval-screen.png',
+        caption: 'approval screen — risk, reasoning, approve/reject',
+      },
+      {
+        src: 'images/projects/incident-control-plane/observability.png',
+        caption: 'distributed traces in the Aspire dashboard',
+      },
+    ],
+    links: {
+      github: 'https://github.com/hazeliscoding/incident-control-plane',
+    },
+    tags: [
+      '.NET 10',
+      'ASP.NET Core',
+      'Anthropic SDK',
+      'MCP',
+      'PostgreSQL',
+      'EF Core',
+      'Angular',
+      'OpenTelemetry',
+      'LocalStack',
+      'Docker',
+    ],
+    featured: true,
+    command: 'glow incident-control-plane.md',
+    status: 'active',
+    year: '2026',
+    stack: '.NET 10 · Angular',
+  },
+  {
     id: 'mcp-gateway',
     title: 'MCP Gateway',
     description:
