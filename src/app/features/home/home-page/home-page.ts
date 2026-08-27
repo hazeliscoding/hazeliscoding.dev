@@ -3,6 +3,7 @@ import { PresentationSection } from '../components/presentation-section/presenta
 import { ServicesSection } from '../components/services-section/services-section';
 import { TechStackSection } from '../components/tech-stack-section/tech-stack-section';
 import { ContactSection } from '../components/contact-section/contact-section';
+import { OssSection } from '../components/oss-section/oss-section';
 import { FeaturedProjectsSection } from '../components/featured-projects-section/featured-projects-section';
 import { Footer } from '../../../core/layout/footer/footer';
 import { Meta, Title } from '@angular/platform-browser';
@@ -14,6 +15,7 @@ import { Meta, Title } from '@angular/platform-browser';
     PresentationSection,
     ServicesSection,
     TechStackSection,
+    OssSection,
     ContactSection,
     FeaturedProjectsSection,
     Footer,
