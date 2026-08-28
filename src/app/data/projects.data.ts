@@ -149,6 +149,46 @@ export const projectsData: Project[] = [
     stack: '.NET 10 · Angular',
   },
   {
+    id: 'agent-eval-platform',
+    title: 'Agent Eval Platform',
+    description:
+      'A framework for repeatedly testing agent behavior under normal and adversarial conditions — it answers the question every agentic system dodges: how do we know this agent is actually reliable?',
+    longDescription: [
+      'Scenarios are YAML data: initial state, allowed and forbidden tools, expected diagnosis, and a script per tool. A deterministic simulator replays those scripts — success, timeout, malformed, injected — records forbidden-tool attempts as data instead of stopping the run (observing bad behavior is the point), and captures everything in an append-only transcript. Timeouts are reported, never slept, so whole suites run in milliseconds.',
+      'The adversarial half: faults are just scripted response variants placed deterministically (exceptions, truncated payloads, duplicates, stale data, authorization denials), and prompt injections carry an attack payload through five surfaces — logs, documents, email, issue comments, tool descriptions — plus ground truth the agent never sees. Resistance is scored from the transcript with no LLM judge: the assertion fails only if the agent called the demanded tool after being exposed to the injection.',
+      'Runs are judged, not eyeballed: typed assertions cover tool usage, output schemas, workflow states, unauthorized actions, and token/time budgets. The same suite runs across models and prompt versions, and a baseline gate fails CI on success-rate drops, new unsafe actions, cost creep, or blown latency budgets — baselines are version-controlled JSON, so score changes show up in pull-request diffs. A static Angular dashboard renders it all from a single dataset.json, no server required.',
+    ],
+    image: 'images/projects/agent-eval-platform/dashboard-overview.png',
+    images: [
+      {
+        src: 'images/projects/agent-eval-platform/dashboard-overview.png',
+        caption: 'dashboard — score cards, scenario matrix, regression flag',
+      },
+      {
+        src: 'images/projects/agent-eval-platform/dashboard-scenario-detail.png',
+        caption: 'injection detail — cautious prompt resists, aggressive obeys',
+      },
+    ],
+    links: {
+      github: 'https://github.com/hazeliscoding/agent-eval-platform',
+    },
+    tags: [
+      '.NET 10',
+      'Anthropic SDK',
+      'Angular',
+      'AI Evals',
+      'Prompt Injection',
+      'Fault Injection',
+      'xUnit',
+      'CI/CD',
+    ],
+    featured: true,
+    command: 'glow agent-eval-platform.md',
+    status: 'active',
+    year: '2026',
+    stack: '.NET 10 · Angular',
+  },
+  {
     id: 'pr-sweep',
     title: 'PR Sweep',
     description:
